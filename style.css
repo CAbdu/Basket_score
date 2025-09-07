@@ -11,14 +11,169 @@ body {
   width: 400px;
   margin-left: -260px; /* half of you width */
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
-  width: 575px;
-  height: 385px;
+  width: 800px;
+  height: 600px;
   opacity: 1;
   background-color: #1b244a;
+  border-radius: 20px;
+}
+
+.periods {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: -10px;
+  padding-top: 4px;
+}
+
+.period-square {
+  width: 15px;
+  height: 15px;
+  background-color: #9aabd8;
+  color: #1b244a;
+  border: 2px solid #9aabd8;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Cursed Timer ULiL;
+  font-weight: bold;
+  font-size: 12px;
+  transition: all 0.3s ease;
+}
+
+.period-square.active {
+  background-color: #f94f6d;
+  color: white;
+  border-color: #f94f6d;
+}
+
+.period-square.completed {
+  background-color: #4caf50;
+  color: white;
+  border-color: #4caf50;
+}
+
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.timer-display {
+  background-color: black;
+  color: #f94f6d;
+  font-family: Cursed Timer ULiL;
+  font-size: 48px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  min-width: 120px;
+  text-align: center;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.timer-btn {
+  background-color: #1b244a;
+  color: #9aabd8;
+  border: 2px solid #9aabd8;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-family: Verdana;
+  font-weight: bold;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.timer-btn:hover {
+  background-color: #9aabd8;
+  color: #1b244a;
+}
+
+.timer-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.fouls-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.fouls-display {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+
+.foul-emoji {
+  font-size: 15px;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.foul-emoji.active {
+  opacity: 1;
+}
+
+.fouls-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.foul-btn {
+  background-color: #1b244a;
+  color: #9aabd8;
+  border: 2px solid #9aabd8;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-family: Verdana;
+  font-weight: bold;
+  font-size: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.foul-btn:hover {
+  background-color: #9aabd8;
+  color: #1b244a;
+}
+
+.foul-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.container > div:not(.periods) {
+  display: flex;
+  align-items: center;
+}
+
+.container .scores-container {
+  display: flex;
+  padding-bottom: 90px;
+  justify-content: space-around;
+  width: 100%;
 }
 
 h3 {
+  margin: 0;
+  padding: 0;
   color: white;
   width: 150px;
   height: 36px;
@@ -38,8 +193,13 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
+  border-radius: 5px;
 }
 
+.winner {
+  border: solid 2px goldenrod;
+}
 .red_score {
   justify-content: center;
   color: #f94f6d;
@@ -59,7 +219,7 @@ h3 {
   justify-content: space-between;
   gap: 9px;
   height: 45px;
-  margin-top: 25px;
+  margin-top: 15px;
 }
 
 .points > button {
@@ -73,4 +233,56 @@ h3 {
   font-weight: 400;
   font-style: Regular;
   font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.points > button:hover {
+  background-color: #9aabd8;
+  color: #1b244a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(154, 171, 216, 0.3);
+}
+
+.points > button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(154, 171, 216, 0.2);
+}
+
+.points > button.clicked {
+  animation: scoreClick 0.3s ease-out;
+}
+
+@keyframes scoreClick {
+  0% {
+    transform: scale(1);
+    background-color: #1b244a;
+  }
+  50% {
+    transform: scale(1.1);
+    background-color: #f94f6d;
+    color: white;
+    box-shadow: 0 0 15px rgba(249, 79, 109, 0.5);
+  }
+  100% {
+    transform: scale(1);
+    background-color: #1b244a;
+    color: #9aabd8;
+  }
+}
+
+.new_game {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 50px;
+  background-color: black;
+  color: #f94f6d;
+  font-family: Verdana;
+  font-weight: bold;
+  font-size: 15px;
 }

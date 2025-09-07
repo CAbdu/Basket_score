@@ -10,32 +10,73 @@
   </head>
   <body>
     <div class="container">
-      <div>
-        <h3>HOME</h3>
-        <div class="home_score">
-          <div class="black_square">
-            <div class="red_score">0</div>
-          </div>
-          <div class="points">
-          <button class="points_btn1">+1</button>
-          <button class="points_btn2">+2</button>
-          <button class="points_btn3">+3</button>
-        </div>
+      <div class="periods">
+        <div class="period-square" data-period="1">1</div>
+        <div class="period-square" data-period="2">2</div>
+        <div class="period-square" data-period="3">3</div>
+        <div class="period-square" data-period="4">4</div>
+      </div>
+      <div class="timer-container">
+        <div class="timer-display">12:00</div>
+        <div class="timer-controls">
+          <button class="timer-btn start-btn">Start</button>
+          <button class="timer-btn pause-btn">Pause</button>
+          <button class="timer-btn reset-btn">Reset</button>
         </div>
       </div>
-      <div>
-        <h3>GUEST</h3>
-        <div class="guest_score">
-          <div class="black_square">
-            <div class="red_score">0</div>
+      <div class="scores-container">
+        <div>
+          <h3>HOME</h3>
+          <div class="fouls-container">
+            <div class="fouls-display" id="home-fouls">
+              <span class="foul-emoji">✋</span>
+              <span class="foul-emoji">✋</span>
+              <span class="foul-emoji">✋</span>
+              <span class="foul-emoji">✋</span>
+            </div>
+            <div class="fouls-buttons">
+              <button class="foul-btn remove-foul" data-team="home">-</button>
+              <button class="foul-btn add-foul" data-team="home">+</button>
+            </div>
           </div>
-          <div class="points">
-          <button class="points_btn1">+1</button>
-          <button class="points_btn2">+2</button>
-          <button class="points_btn3">+3</button>
+          <div class="home_score">
+            <div id="home-square" class="black_square">
+              <div class="red_score">0</div>
+            </div>
+            <div class="points">
+            <button class="points_btn1">+1</button>
+            <button class="points_btn2">+2</button>
+            <button class="points_btn3">+3</button>
+          </div>
+          </div>
+        </div>
+        <div>
+          <h3>GUEST</h3>
+          <div class="fouls-container">
+            <div class="fouls-display" id="guest-fouls">
+              <span class="foul-emoji">✋</span>
+              <span class="foul-emoji">✋</span>
+              <span class="foul-emoji">✋</span>
+              <span class="foul-emoji">✋</span>
+            </div>
+            <div class="fouls-buttons">
+              <button class="foul-btn remove-foul" data-team="guest">-</button>
+              <button class="foul-btn add-foul" data-team="guest">+</button>
+            </div>
+          </div>
+          <div class="guest_score">
+            <div id="guest-square" class="black_square">
+              <div class="red_score">0</div>
+            </div>
+            <div class="points">
+            <button class="points_btn1">+1</button>
+            <button class="points_btn2">+2</button>
+            <button class="points_btn3">+3</button>
+          </div>
         </div>
       </div>
     </div>
+    <button class="new_game">New Game</button>
     <script src="index.js"></script>
   </body>
 </html>
